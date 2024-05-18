@@ -1,0 +1,909 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  text-decoration: none;
+  list-style: none;
+}
+
+@font-face {
+  font-family: --Quicksand-Bold;
+  src: url(../fonts/Quicksand-Bold.ttf);
+}
+@font-face {
+  font-family: --Quicksand-Medium;
+  src: url(../fonts/Quicksand-Medium.ttf);
+}
+@font-face {
+  font-family: --Quicksand-Regular;
+  src: url(../fonts/Quicksand-Regular.ttf);
+}
+:root {
+  --pFF: --Quicksand-Regular;
+  --h3FF: --Quicksand-Medium;
+  --h2FF: --Quicksand-Bold;
+  --pFS: 1rem;
+  --h3FS: 1.3rem;
+  --h2FS: 2rem;
+  --white: #fff;
+  --black: #000;
+  --primary-color: #ffbc0d;
+  --secondary-color: red;
+  --white-ish: #eff0f6;
+  --transition: all 400ms ease-in-out;
+  --box-shadow: 0 0 20px 10px rgba(0,0,0,0.1);
+}
+
+p {
+  font-size: var(--pFS);
+  font-family: var(--pFF);
+  color: var(--black);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--h3FS);
+  font-family: var(--h3FF);
+  color: var(--black);
+  font-weight: 600;
+}
+
+a {
+  color: var(--black);
+  font-size: var(--pFS);
+  font-family: var(--pFF);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: var(--h2FS);
+  font-family: var(--h2FF);
+  color: var(--black);
+  font-weight: 700;
+}
+
+span {
+  color: var(--secondary-color);
+}
+
+.container {
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.buttons .btn {
+  outline: none;
+  border: none;
+  color: var(--black);
+  font-size: var(--pFS);
+  font-family: var(--pFF);
+  font-weight: 600;
+  background: var(--primary-color);
+  padding: 0.6rem 20px;
+  border-radius: 50px;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.buttons .btn:hover {
+  color: var(--white);
+  background: var(--secondary-color);
+}
+
+.section {
+  padding: 50px 20px;
+}
+
+.title {
+  width: 500px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--black);
+  font-size: 1.3rem;
+  border-radius: 50%;
+  padding: 1.5rem 1.5rem;
+  background: var(--primary-color);
+  box-shadow: var(--box-shadow);
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+  font-size: var(--h3FS);
+  font-weight: 600;
+}
+
+.menuBox {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background: url(../img/menu_40px.png);
+  background-size: 60% 60%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: none;
+}
+.menuBox.closeBox {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: url(../img/close_40px.png);
+  background-size: 60% 60%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  background-position: center center;
+  transition: var(--transition);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  z-index: 1000;
+}
+.header.headerAnimation {
+  animation: slideIn 1s ease-in-out;
+}
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.header .top {
+  padding: 0.8rem 20px;
+  background: var(--white-ish);
+  width: 100%;
+  transition: var(--transition);
+}
+.header .top .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.header .top .container p a {
+  transform: var(--transition);
+}
+.header .top .container p a:hover {
+  color: var(--secondary-color);
+}
+.header .bottom {
+  padding: 0.8rem 20px;
+  background: var(--white);
+  transition: var(--transition);
+}
+.header .bottom .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.header .bottom .container .logo {
+  width: 100px;
+  height: 50px;
+}
+.header .bottom .container .logo .logoImg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.header .bottom .container .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  transition: var(--transition);
+}
+.header .bottom .container .navbar .nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.header .bottom .container .navbar .nav li a {
+  transition: var(--transition);
+}
+.header .bottom .container .navbar .nav li a:hover, .header .bottom .container .navbar .nav li a.active {
+  color: var(--secondary-color);
+}
+.header .bottom .container .navbar .buttons {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.home {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+.home .boxWrapper {
+  height: 100%;
+}
+.home .boxWrapper .containerBox {
+  height: 100%;
+}
+.home .boxWrapper .containerBox .box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.home .boxWrapper .containerBox .box .imgBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.home .boxWrapper .containerBox .box .textBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  padding: 100px 20px;
+}
+.home .boxWrapper .containerBox .box .textBox .container {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.home .boxWrapper .containerBox .box .textBox .container .content {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 30px 30px;
+  width: 500px;
+  max-width: 100%;
+  margin: 0;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.categories {
+  background: var(--white-ish);
+}
+.categories .container .boxWrapper .containerBox .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+.categories .container .boxWrapper .containerBox .box:hover .boxImg {
+  border: 5px solid var(--secondary-color);
+}
+.categories .container .boxWrapper .containerBox .box:hover .boxImg .imgBox {
+  transform: scale(1.4) rotate(-10deg);
+}
+.categories .container .boxWrapper .containerBox .box:hover .textBox h3 {
+  color: var(--secondary-color);
+}
+.categories .container .boxWrapper .containerBox .box .boxImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid var(--white);
+  overflow: hidden;
+  padding: 1rem 1rem;
+  transition: var(--transition);
+}
+.categories .container .boxWrapper .containerBox .box .boxImg .imgBox {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: var(--transition);
+}
+
+.orders .container .containerBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.orders .container .containerBox .box {
+  flex: 1 1 20rem;
+  align-self: normal;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+}
+.orders .container .containerBox .box:hover .boxImg .imgBox {
+  transform: scale(1.4) rotate(-10deg);
+}
+.orders .container .containerBox .box .boxImg {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.orders .container .containerBox .box .boxImg .imgBox {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: var(--transition);
+}
+.orders .container .containerBox .box .textBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 20px 20px;
+}
+.orders .container .containerBox .box .textBox a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  transition: var(--transition);
+}
+.orders .container .containerBox .box .textBox a:hover {
+  color: var(--secondary-color);
+}
+
+.action {
+  height: 80vh;
+  width: 100%;
+  position: relative;
+  background: url(../img/bg-1.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.menu .container .containerBox {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.menu .container .containerBox .box {
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--white);
+  border: 3px solid var(--white);
+  transition: var(--transition);
+}
+.menu .container .containerBox .box:hover {
+  border-color: var(--secondary-color);
+}
+.menu .container .containerBox .box:hover .textBox h3, .menu .container .containerBox .box:hover .textBox p {
+  color: var(--secondary-color);
+}
+.menu .container .containerBox .box:hover .boxImg img {
+  animation: rotateImg 1.2s ease-in-out infinite;
+}
+@keyframes rotateImg {
+  0% {
+    transform: rotateZ(0deg);
+    transform-style: preserve-3d;
+  }
+  100% {
+    transform: rotateZ(360deg);
+    transform-style: preserve-3d;
+  }
+}
+.menu .container .containerBox .box .boxImg {
+  overflow: hidden;
+  width: 100%;
+  height: 250px;
+  padding: 1rem 1rem;
+  perspective: 500px;
+}
+.menu .container .containerBox .box .boxImg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: var(--transition);
+}
+.menu .container .containerBox .box .textBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+  padding: 1rem 1rem;
+}
+.menu .container .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.menu .container .buttons .btn {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+.menu .container .buttons .btn:hover {
+  background: var(--secondary-color);
+  color: var(--white);
+}
+
+.ourFood {
+  background: var(--white-ish);
+}
+.ourFood .container .containerBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.ourFood .container .containerBox h2, .ourFood .container .containerBox p {
+  text-align: center;
+}
+.ourFood .container .containerBox .content {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+}
+.ourFood .container .containerBox .content .box {
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+.ourFood .container .containerBox .content .box:hover .boxImg .imgBox {
+  transform: scale(1.4);
+}
+.ourFood .container .containerBox .content .box .boxImg {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.ourFood .container .containerBox .content .box .boxImg .imgBox {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: var(--transition);
+}
+.ourFood .container .containerBox .content .box .textBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.1);
+}
+.ourFood .container .containerBox .content .box .textBox h3 {
+  color: var(--white);
+}
+.ourFood .container .containerBox .buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deals .container .title {
+  width: 800px;
+}
+.deals .container .containerBox {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.deals .container .containerBox .box {
+  flex: 1 1 20rem;
+  align-self: normal;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.deals .container .containerBox .box:hover .boxImg .imgBox {
+  transform: scale(1.4) rotate(-10deg);
+}
+.deals .container .containerBox .box .textBox {
+  padding: 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.deals .container .containerBox .box .textBox a {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: var(--transition);
+}
+.deals .container .containerBox .box .textBox a:hover {
+  color: var(--secondary-color);
+}
+.deals .container .containerBox .box .boxImg {
+  overflow: hidden;
+  width: 100%;
+  height: 250px;
+}
+.deals .container .containerBox .box .boxImg .imgBox {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: var(--transition);
+}
+
+.hub {
+  height: 80vh;
+  position: relative;
+  background: url(../img/img-11.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.rewards .container .title {
+  width: 800px;
+}
+.rewards .container .containerBox {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.rewards .container .containerBox .box {
+  flex: 1 1 20rem;
+  align-items: center;
+  align-self: normal;
+}
+.rewards .container .containerBox .box .boxImg {
+  width: 100%;
+  height: 250px;
+}
+.rewards .container .containerBox .box .boxImg .imgBox {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.rewards .container .containerBox .box .textBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-direction: column;
+  padding: 20px 20px;
+}
+
+.footer {
+  background: var(--white-ish);
+}
+.footer .container .divider {
+  width: 100%;
+  height: 2px;
+  background: #dfe0e4;
+  margin: 0.5rem 0;
+}
+.footer .container .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.footer .container .content .logo {
+  flex: 1 1 20rem;
+}
+.footer .container .content .newsletter {
+  flex: 1 1 50rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: flex-end;
+}
+.footer .container .content .newsletter .form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid var(--primary-color);
+  background: var(--white);
+  border-radius: 50px;
+  overflow: hidden;
+}
+.footer .container .content .newsletter .form .text {
+  padding-left: 1rem;
+  outline: none;
+  border: none;
+  font-size: var(--pFS);
+  font-family: var(--pFF);
+  font-weight: 600;
+  color: var(--black);
+}
+.footer .container .content .newsletter .form .text::-moz-placeholder {
+  color: var(--black);
+}
+.footer .container .content .newsletter .form .text::placeholder {
+  color: var(--black);
+}
+.footer .container .containerBox {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+.footer .container .containerBox .box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.footer .container .containerBox .box .cont-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer .container .containerBox .box .cont-info li {
+  font-size: var(--pFS);
+  font-family: var(--pFF);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.footer .container .containerBox .box .cont-info li .fa-solid {
+  color: var(--primary-color);
+}
+.footer .container .containerBox .box .link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer .container .containerBox .box .link li {
+  font-size: var(--pFS);
+  font-family: var(--pFF);
+  font-weight: 600;
+}
+.footer .container .containerBox .box .link li a {
+  transition: var(--transition);
+}
+.footer .container .containerBox .box .link li a:hover {
+  color: var(--secondary-color);
+  padding-left: 10px;
+}
+.footer .container .containerBox .box .apps {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.footer .container .containerBox .box .apps .boxImg {
+  background: rebeccapurple;
+  overflow: hidden;
+  width: 100px;
+  height: 30px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.footer .container .containerBox .box .apps .boxImg .imgBox {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.footer .container .containerBox .box:nth-child(2) {
+  margin-left: 3rem;
+}
+.footer .container .copyright {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: var(--pFS);
+  font-family: var(--pFF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.scrollTop .goTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--white);
+  cursor: pointer;
+  transition: var(--transition);
+  outline: none;
+  border: 3px solid var(--white);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  z-index: 100;
+}
+.scrollTop .goTop.active {
+  display: flex;
+  animation: slideIn 1s ease-in-out;
+}
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.scrollTop .goTop .fa-solid {
+  color: var(--black);
+  font-size: var(--h3FS);
+}
+
+@media screen and (max-width: 992px) {
+  .menuBox {
+    display: flex;
+  }
+  .header .top .container .hide {
+    display: none;
+  }
+  .header .bottom .container .navbar {
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    z-index: 1001;
+    border: 3px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 30px 20px;
+    transition: var(--transition);
+    flex-direction: column;
+    display: none;
+  }
+  .header .bottom .container .navbar.active {
+    display: flex;
+  }
+  .header .bottom .container .navbar .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+  .header .bottom .container .navbar .buttons {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  .header .bottom .container .navbar .buttons a {
+    width: 100%;
+  }
+  .header .bottom .container .navbar .buttons .btn {
+    width: 100%;
+  }
+  .orders .container .containerBox {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .menu .container .containerBox {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .ourFood .container .containerBox .content {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .deals .container .containerBox {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .rewards .container .containerBox {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .footer .container .containerBox {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .footer .container .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .footer .container .content .newsletter {
+    flex: 1 1 50rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .footer .container .containerBox .box:nth-child(2) {
+    margin-left: 0;
+  }
+  .footer .container .containerBox .box .apps {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 600px) {
+  .header .top .container .hide {
+    display: none;
+  }
+  .menu .container .containerBox .box .boxImg {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  .menu .container .containerBox .box .boxImg img {
+    -o-object-fit: fill;
+       object-fit: fill;
+  }
+  .menu .container .containerBox .box .textBox h3 {
+    font-size: var(--pFS);
+  }
+  .ourFood .container .containerBox .content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .menu .container .containerBox {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .hub {
+    height: 80vh;
+    position: relative;
+    background: url(../img/img-11.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center right;
+  }
+  .footer .container .containerBox {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+}/*# sourceMappingURL=style.css.map */
